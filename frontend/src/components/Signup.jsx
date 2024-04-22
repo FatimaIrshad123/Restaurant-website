@@ -16,7 +16,7 @@ export default function Signup() {
             const response = await axios.post("http://localhost:3000/admin/signup",{username,password} )
             const jwt = response.data.token;
             localStorage.setItem("token",jwt)
-            navigate('/')
+            navigate('/menu')
         }
     }
     return (

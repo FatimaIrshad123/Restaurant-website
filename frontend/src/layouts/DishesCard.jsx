@@ -9,13 +9,7 @@ const DishesCard = (props) => {
       <img className=" rounded-xl" src={props.img} alt="img" />
       <div className=" space-y-4">
         <h3 className=" font-semibold text-center text-xl pt-6">{props.title}</h3>
-        <div className=" flex flex-row justify-center">
-          <BsStarFill className=" text-brightColor" />
-          <BsStarFill className=" text-brightColor" />
-          <BsStarFill className=" text-brightColor" />
-          <BsStarFill className=" text-brightColor" />
-          <BsStarHalf className=" text-brightColor" />
-        </div>
+       
         <div className=" flex flex-row items-center justify-center gap-4">
           <h3 className=" font-semibold text-lg">{props.price}</h3>
           <Button title="Buy Now" />

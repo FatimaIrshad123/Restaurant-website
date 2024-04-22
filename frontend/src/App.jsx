@@ -13,6 +13,8 @@ import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import Signup from "./components/Signup";
 import AddMenu from "./components/AddMenu";
+import AllMenu from "./components/AllMenu";
+import Menu from "./components/Menu";
 
 const App = () => {
   return (
@@ -25,6 +27,7 @@ const App = () => {
           <Route path="/login" element={<Login />}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path="/addmenu" element={<AddMenu/>}/>
+          <Route path="/menu" element={<Menu/>}/>
         </Routes>
       </BrowserRouter>
       

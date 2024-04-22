@@ -13,7 +13,7 @@ export default function Login() {
             const response = await axios.post("http://localhost:3000/admin/signin",{username,password} )
             const jwt = response.data.token;
             localStorage.setItem("token",jwt)
-            navigate('/')
+            navigate('/menu')
             console.log(response.data)
             console.log(jwt)
         } catch (error) {

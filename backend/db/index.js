@@ -9,7 +9,7 @@ const AdminSchema = mongoose.Schema({
 
 
 const FoodSchema = new mongoose.Schema({
-    name : String,
+    title : String,
     imageLink : String,
     price : Number
 });

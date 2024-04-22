@@ -1,19 +1,24 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function AddMenu(){
     const [title,setTitle] = useState('')
     const [imageLink,setImageLink] = useState('')
     const [price,setPrice] = useState(0)
+    const navigate = useNavigate()
 
     async function sendRequest(){
-        console.log(localStorage.getItem('token'))
         try {
+            if (title=='' || imageLink== ''|| price==''){
+                return alert('Please fill the required field')
+            }
             const response = await axios.post("http://localhost:3000/admin/addmenu",{title,imageLink,price},
             {headers: {
                 'Content-Type': 'application/json',
                 'Authorization' : localStorage.getItem('token')
               }})
+              navigate('/menu')
              
         } catch (error) {
             alert('request failed')
