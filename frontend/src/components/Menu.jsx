@@ -19,7 +19,7 @@ const Menu = () => {
         <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
        
         <div className=" flex flex-row items-center justify-center gap-4">
-          <h3 className=" font-semibold text-lg">{x.price}</h3>
+          <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
           <Button title="Buy Now" />
         </div>
       </div>
@@ -43,10 +43,10 @@ const Menu = () => {
 
       <div className=" flex flex-wrap gap-8 justify-center">
           {data}
-        <DishesCard img={menu1} title='Delicious Dish' price='$18.99' />
-        <DishesCard img={menu1} title='Delicious Dish' price='$18.99' />
-        <DishesCard img={menu2} title="Delicious Dish" price="$18.99" />
-        <DishesCard img={menu3} title="Delicious Dish" price="$14.99" />
+        <DishesCard img={menu1} title='Delicious Dish' price='18.99 Rs' />
+        <DishesCard img={menu1} title='Delicious Dish' price='18.99 Rs' />
+        <DishesCard img={menu2} title="Delicious Dish" price="18.99 Rs" />
+        <DishesCard img={menu3} title="Delicious Dish" price="14.99 Rs" />
       </div>
     </div>
   );

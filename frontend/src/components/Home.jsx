@@ -14,7 +14,7 @@ const Home = () => {
           deleniti?
         </p>
         <div className=" lg:pl-44">
-          <Button title="Order Now" />
+          <Button title="Book your table" />
         </div>
       </div>
     </div>

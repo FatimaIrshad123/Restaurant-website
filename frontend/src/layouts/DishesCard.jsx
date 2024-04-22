@@ -12,7 +12,7 @@ const DishesCard = (props) => {
        
         <div className=" flex flex-row items-center justify-center gap-4">
           <h3 className=" font-semibold text-lg">{props.price}</h3>
-          <Button title="Buy Now" />
+          <Button title="Add to cart" />
         </div>
       </div>
     </div>
