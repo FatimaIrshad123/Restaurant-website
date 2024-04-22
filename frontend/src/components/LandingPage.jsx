@@ -14,24 +14,24 @@ export default function LandingPage(){
           <Home />
         </div>
 
-        <div id="dishes">
+        {/*<div id="dishes">
           <Dishes />
-        </div>
+        </div>*/}
 
-        <div id="about">
+        {/*<div id="about">
           <About />
-        </div>
+        </div>*/}
 
         <div id="menu">
           <Menu />
         </div>
 
-        <div id="review">
+        {/*<div id="review">
           <Review />
-        </div>
+        </div>*/}
       </main>
 
-      <Footer />
+      {/*<Footer />*/}
         </div>
     )
 }

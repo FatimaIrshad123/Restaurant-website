@@ -14,7 +14,7 @@ const Menu = () => {
           setData(data[i].map(x => {
             return (
               <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg">
-      <img className=" rounded-xl" src={x.imageLink} alt="img" />
+      <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
       <div className=" space-y-4">
         <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
        
@@ -38,7 +38,7 @@ const Menu = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
       <h1 className=" text-4xl font-semibold text-center lg:pt-8 pt-24 pb-10">
-        Premium Menu
+        OUR MENU
       </h1>
 
       <div className=" flex flex-wrap gap-8 justify-center">

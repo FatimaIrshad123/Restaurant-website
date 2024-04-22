@@ -49,7 +49,7 @@ export default function Signup() {
                 </div>    
                 <p class="text-sm font-light 
                 text-gray-500 dark:text-gray-400 mb-5 ml-5">
-                      Already have an account? <Link to="/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</Link>
+                      Already have an account? <Link to="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</Link>
                   </p>
       </div>
       </div>

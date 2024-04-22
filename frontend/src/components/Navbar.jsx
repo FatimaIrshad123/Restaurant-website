@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BiRestaurant } from "react-icons/bi";
 import Button from "../layouts/Button";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
@@ -16,7 +17,7 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenu(false);
   };
-
+  const navigate = useNavigate()
   return (
     <div className=" fixed w-full">
       <div>
@@ -29,110 +30,45 @@ const Navbar = () => {
           </div>
 
           <nav className="hidden md:flex flex-row items-center text-lg font-medium gap-8">
-            <Link
-              to="home"
-              spy={true}
-              smooth={true}
-              duration={500}
+            <NavLink to="/" spy={true} smooth={true} duration={500}
               className="hover:text-brightColor transition-all cursor-pointer"
-            >
-              Home
-            </Link>
+            >Home </NavLink>
+           
+           {/* <Link to="about" spy={true} smooth={true} duration={500}
+              className="hover:text-brightColor transition-all cursor-pointer"
+  >About </Link>*/}
+
+            <Link to="menu" spy={true} smooth={true} duration={500}
+              className="hover:text-brightColor transition-all cursor-pointer"
+            >Menu </Link>
 
             <div className="relative group">
               <div className=" flex items-center gap-1">
-                <Link
-                  to="dishes"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
+                <NavLink to="#" spy={true} smooth={true} duration={500}
                   className="hover:text-brightColor transition-all cursor-pointer"
-                >
-                  Dishes
-                </Link>
+                > Admin </NavLink>
 
                 <BiChevronDown className="cursor-pointer" size={25} />
               </div>
 
               <ul className="absolute hidden space-y-2 group-hover:block bg-white border border-gray-300 rounded-lg p-5">
                 <li>
-                  <Link
-                    to="dishes"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
+                  <NavLink to="/login" spy={true} smooth={true} duration={500}
                     className="text-gray-800 hover:text-brightColor transition-all cursor-pointer"
-                  >
-                    Spicy
-                  </Link>
+                  > Login</NavLink>
                 </li>
                 <li>
-                  <Link
-                    to="dishes"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
+                  <NavLink to="/signup" spy={true} smooth={true} duration={500}
                     className="text-gray-800 hover:text-brightColor transition-all cursor-pointer"
-                  >
-                    Tasty
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="dishes"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    className="text-gray-800 hover:text-brightColor transition-all cursor-pointer"
-                  >
-                    Delicious
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="dishes"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    className="text-gray-800 hover:text-brightColor transition-all cursor-pointer"
-                  >
-                    Crispy
-                  </Link>
+                  > Sign Up </NavLink>
                 </li>
               </ul>
             </div>
-
-            <Link
-              to="about"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className="hover:text-brightColor transition-all cursor-pointer"
-            >
-              About
-            </Link>
-
-            <Link
-              to="menu"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className="hover:text-brightColor transition-all cursor-pointer"
-            >
-              Menu
-            </Link>
-
-            <Link
-              to="review"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className="hover:text-brightColor transition-all cursor-pointer"
-            >
-              Reviews
-            </Link>
-
-            <Button title="Login" />
+            <NavLink>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+            </NavLink>
           </nav>
 
           <div className="md:hidden flex items-center">
@@ -148,58 +84,33 @@ const Navbar = () => {
             menu ? "translate-x-0" : "-translate-x-full"
           } lg:hidden flex flex-col absolute bg-black text-white left-0 top-20 font-semibold text-2xl text-center pt-8 pb-4 gap-8 w-full h-fit transition-transform duration-300`}
         >
-          <Link
-            to="home"
-            spy={true}
-            smooth={true}
-            duration={500}
+          <NavLink to="/" spy={true} smooth={true} duration={500}
             className="hover:text-brightColor transition-all cursor-pointer"
             onClick={closeMenu}
           >
             Home
-          </Link>
-          <Link
-            to="dishes"
-            spy={true}
-            smooth={true}
-            duration={500}
+          </NavLink>
+          <NavLink to="/login" spy={true} smooth={true} duration={500}
             className="hover:text-brightColor transition-all cursor-pointer"
             onClick={closeMenu}
           >
-            Dishes
-          </Link>
-          <Link
-            to="about"
-            spy={true}
-            smooth={true}
-            duration={500}
+            Login
+          </NavLink>
+          <NavLink to="signup" spy={true} smooth={true} duration={500}
             className="hover:text-brightColor transition-all cursor-pointer"
             onClick={closeMenu}
-          >
-            About
-          </Link>
-          <Link
-            to="menu"
-            spy={true}
-            smooth={true}
-            duration={500}
+          >Sign Up </NavLink>
+          <Link to="menu" spy={true} smooth={true} duration={500}
             className="hover:text-brightColor transition-all cursor-pointer"
             onClick={closeMenu}
-          >
-            Menu
-          </Link>
-          <Link
-            to="review"
-            spy={true}
-            smooth={true}
-            duration={500}
+          >Menu</Link>
+          <Link to="review" spy={true} smooth={true} duration={500}
             className=" hover:text-brightColor transition-all cursor-pointer"
             onClick={closeMenu}
-          >
-            Reviews
-          </Link>
+          >Reviews</Link>
 
           <Button title="login" />
+          
         </div>
       </div>
     </div>
