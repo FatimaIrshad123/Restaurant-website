@@ -2,7 +2,8 @@ const { Admin } = require("../db");
 const { jwtSecret } = require('../config')
 var jwt = require('jsonwebtoken');
 
-function adminMiddleware(req, res, next) {
+console.log(jwtSecret)
+function Middleware(req, res, next) {
 
     let token = req.headers.authorization;
    
@@ -19,4 +20,4 @@ function adminMiddleware(req, res, next) {
     }
 }
 
-module.exports = adminMiddleware;
+module.exports = Middleware;
