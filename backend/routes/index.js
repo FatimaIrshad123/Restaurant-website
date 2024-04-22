@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const adminMiddleware = require("../middleware/admin");
+const middleware = require("../middleware");
 const jwt = require('jsonwebtoken')
-const { Admin,Course } = require("../db");
+const { Admin,food, Food } = require("../db");
 const router = Router();
 const {jwtSecret} = require('../config')
 
@@ -47,25 +47,24 @@ router.post('/signin', async(req, res) => {
     
 });
 
-router.post('/addcourses', adminMiddleware,async (req, res) => {
+router.post('/addmenu',middleware,async (req, res) => {
     // Implement course creation logic
     let title = req.body.title;
-    let description = req.body.description;
     let imageLink = req.body.imageLink;
     let price = req.body.price;
 
-    const newCourse = await Course.create({
+    const newFood = await Food.create({
         title,
-        description,
+        imageLink,
         price
     })
-    res.json({msg:'Course created successfully',CourseId : newCourse._id})
+    res.json({msg:'Item created successfully',FoodId : newFood._id})
 });
 
 
-router.get('/courses', adminMiddleware, async(req, res) => {
-    const response = await Course.find({})
-    res.json({courses : response})
+router.get('/menu', middleware, async(req, res) => {
+    const response = await Food.find({})
+    res.json({menu : response})
 });
 
 router.get('/',async(req,res) => {
@@ -74,7 +73,7 @@ router.get('/',async(req,res) => {
     res.json({Admin : response})
 })
 
-router.get('/me',adminMiddleware,async(req,res)=> {
+router.get('/me',middleware,async(req,res)=> {
     res.json({
         user : req.user
     })
