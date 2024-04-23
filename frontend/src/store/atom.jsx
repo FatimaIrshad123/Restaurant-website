@@ -10,7 +10,7 @@ export const notifications = atom({
             const res = await axios.get('http://localhost:3000/admin/menu/all',{
                 headers:{'Authorization' : localStorage.getItem('token')}
             })
-console.log(res.data)
+            
             return res.data
         } 
     })
@@ -26,3 +26,4 @@ export const getById = atomFamily({
         }
     })
 })
+

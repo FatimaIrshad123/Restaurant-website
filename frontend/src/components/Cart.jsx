@@ -20,8 +20,8 @@ export default function Cart({id}){
         </div>
         {data.map((e) => {
             return (
-                <div>
-                    <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5 mt-4">
+                <div key={e._id}>
+                    <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5 mt-4" >
             
             <div className="flex font-bold p-3 rounded w-screen">
                 <h2 className="pr-48">{e.title}</h2>

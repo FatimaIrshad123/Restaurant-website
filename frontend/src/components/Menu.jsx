@@ -6,11 +6,14 @@ import menu2 from "../assets/img/menu2.jpg";
 import menu3 from "../assets/img/menu3.jpg";
 import Button from "../layouts/Button";
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
-import { notifications } from "../store/atom";
+import {notifications } from "../store/atom";
+import axios from "axios";
 
 const Menu = () => {
   const data = useRecoilValue(notifications)
+  
 
+  
   return (
    
     <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
@@ -20,8 +23,9 @@ const Menu = () => {
 
       <div className=" flex flex-wrap gap-8 justify-center">
           {data.menu.map((x) => {
+          
           return (
-            <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg">
+            <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg" key={x._id}>
               
     <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
     <div className=" space-y-4">
@@ -30,12 +34,11 @@ const Menu = () => {
       <div className=" flex flex-row items-center justify-center gap-4">
         <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
         <Button title="Buy Now"  />
+       
       </div>
     </div>
   </div>
-          )  
-          }
-          )}
+          )})}
         <DishesCard img={menu1} title='Delicious Dish' price='18.99 Rs' />
         <DishesCard img={menu1} title='Delicious Dish' price='18.99 Rs' />
         <DishesCard img={menu2} title="Delicious Dish" price="18.99 Rs" />
