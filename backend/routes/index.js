@@ -61,10 +61,11 @@ router.post('/addmenu',middleware,async (req, res) => {
     res.json({msg:'Item created successfully',FoodId : newFood._id})
 });
 
-router.get('/:id', async(req,res) => {
+router.post('/:id', async(req,res) => {
+    console.log('hi')
     const id = req.params.id;
     const food = await Food.find({_id : id}) 
-    res.json(food)
+    res.json({food})
 })
 
 router.get('/menu', middleware, async(req, res) => {
