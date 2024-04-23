@@ -13,6 +13,7 @@ import AddMenu from "./components/AddMenu";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import { RecoilRoot } from "recoil";
+import MenuRecoil from "./MenuRecoil";
 
 const App = () => {
   const [cart,setCart] = useState(0)
@@ -29,9 +30,13 @@ const App = () => {
           <Route path="/addmenu" element={<AddMenu/>}/>
           <Route path="/menu" element={
           <RecoilRoot>
-            <Menu/>
-            </RecoilRoot>}/>
-          <Route path= '/cart' element={<Cart />}/>
+            <MenuRecoil />
+            </RecoilRoot>}
+          />
+          <Route path= '/cart' element={
+          <RecoilRoot><Cart id = {'66261ca2df6655a3ae4f6a82'}/>
+          </RecoilRoot>}/>
+         
         </Routes>
       </BrowserRouter>
       

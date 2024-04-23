@@ -1,5 +1,5 @@
 import axios from "axios";
-import { atom, selector } from "recoil";
+import { atom, selector,atomFamily,selectorFamily } from "recoil";
 
 export const notifications = atom({
     key: "networkAtom",
@@ -7,11 +7,22 @@ export const notifications = atom({
         key : 'networkAtomSelector',
         get : async() => {
            
-            const res = await axios.get('http://localhost:3000/admin/menu',{
+            const res = await axios.get('http://localhost:3000/admin/menu/all',{
                 headers:{'Authorization' : localStorage.getItem('token')}
             })
-            
+console.log(res.data)
             return res.data
         } 
     })
 });
+
+export const getById = atomFamily({
+    key : 'getById',
+    default : selectorFamily({
+        key : 'TodoSelectorfamily',
+        get : (id) => async() => {
+            const res = await axios.get(`http://localhost:3000/admin/${id}`)
+            return res.data
+        }
+    })
+})

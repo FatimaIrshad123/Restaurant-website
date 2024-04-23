@@ -5,38 +5,11 @@ import menu1 from "../assets/img/menu1.jpg";
 import menu2 from "../assets/img/menu2.jpg";
 import menu3 from "../assets/img/menu3.jpg";
 import Button from "../layouts/Button";
-import { RecoilRoot, useRecoilState } from "recoil";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import { notifications } from "../store/atom";
 
 const Menu = () => {
-  const [data,setData] = useRecoilState(notifications)
-//console.log(data.menu)
-  /*useEffect(() => {
-    function callback2(data){        
-        for (let i in data){
-          setData(data[i].map(x => {
-            return (
-              <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg">
-      <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
-      <div className=" space-y-4">
-        <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
-       
-        <div className=" flex flex-row items-center justify-center gap-4">
-          <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
-          <Button title="Buy Now"  />
-        </div>
-      </div>
-    </div>
-            )
-          }))
-        }}
-      function callback1(res){
-        res.json().then(callback2)
-      }
-    fetch('http://localhost:3000/admin/menu',{method:'GET',
-        headers:{'Authorization' : localStorage.getItem('token')}
-    }).then(callback1)
-},[])*/
+  const data = useRecoilValue(notifications)
 
   return (
    
@@ -69,6 +42,7 @@ const Menu = () => {
         <DishesCard img={menu3} title="Delicious Dish" price="14.99 Rs" />
       </div>
     </div>
+   
   );
 };
 
