@@ -2,7 +2,7 @@ const { Admin } = require("../db");
 const { jwtSecret } = require('../config')
 var jwt = require('jsonwebtoken');
 
-console.log(jwtSecret)
+
 function Middleware(req, res, next) {
 
     let token = req.headers.authorization;
