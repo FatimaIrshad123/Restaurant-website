@@ -68,7 +68,7 @@ router.get('/:id', async(req,res) => {
     res.json(food)
 })
 
-router.get('/menu/all',middleware, async(req, res) => {
+router.get('/menu/all', async(req, res) => {
     
    const response = await Food.find({})
     res.json({menu : response})

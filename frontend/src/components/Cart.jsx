@@ -2,10 +2,11 @@ import { useState } from "react"
 import axios from "axios"
 import { useRecoilState } from "recoil"
 import { getById } from "../store/atom"
+import { startTransition } from 'react';
 
 export default function Cart({id}){
     const [cart,setCart] = useState(0)
-
+    
     const [data,setData] = useRecoilState(getById(id))
    //const id = '66261594df6655a3ae4f69f3'
   console.log(data)
