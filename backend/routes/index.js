@@ -61,17 +61,22 @@ router.post('/addmenu',middleware,async (req, res) => {
     res.json({msg:'Item created successfully',FoodId : newFood._id})
 });
 
-router.post('/:id', async(req,res) => {
+router.get('/:id', async(req,res) => {
     console.log('hi')
     const id = req.params.id;
     const food = await Food.find({_id : id}) 
-    res.json({food})
+    res.json(food)
 })
 
-router.get('/menu', middleware, async(req, res) => {
-    const response = await Food.find({})
+router.get('/menu/all',middleware, async(req, res) => {
+    
+   const response = await Food.find({})
     res.json({menu : response})
 });
+
+router.get('/xyz',(req,res)=> {
+    res.json({msg: 'bac'})
+})
 
 router.get('/',async(req,res) => {
     const response = await Admin.find({})

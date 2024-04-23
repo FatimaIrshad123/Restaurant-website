@@ -9,6 +9,7 @@ function Middleware(req, res, next) {
    
     if (token){
         jwt.verify(token,jwtSecret,(err,user)=>{
+            console.log(user)
             if (err){
                 return res.sendStatus(403);
             }
