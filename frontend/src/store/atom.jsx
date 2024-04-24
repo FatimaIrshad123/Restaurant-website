@@ -1,18 +1,17 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { atom, selector,atomFamily,selectorFamily } from "recoil";
 
 export const notifications = atom({
     key: "networkAtom",
     default : selector({
         key : 'networkAtomSelector',
-        get : async() => {
-           
+        get : async() => {  
             const res = await axios.get('http://localhost:3000/admin/menu/all',{
                 headers:{'Authorization' : localStorage.getItem('token')}
-            })
-            
-            return res.data
-        } 
+           })
+           return res.data
+        }
     })
 });
 

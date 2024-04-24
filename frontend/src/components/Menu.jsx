@@ -10,10 +10,9 @@ import {notifications } from "../store/atom";
 import axios from "axios";
 
 const Menu = () => {
-  const data = useRecoilValue(notifications)
+    const data = useRecoilValue(notifications)
 
   return (
-   
     <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
       <h1 className=" text-4xl font-semibold text-center lg:pt-8 pt-24 pb-10">
         OUR MENU
@@ -32,8 +31,8 @@ const Menu = () => {
                     const res = await axios.post('http://localhost:3000/admin/',{
                     id:x._id})
                     alert('Order added successfully')
-                    console.log(res.data)
-                  }}>Click</button>
+                    //console.log(res.data)
+                  }}>Order now</button>
                 </div>
               </div>
             </div>
