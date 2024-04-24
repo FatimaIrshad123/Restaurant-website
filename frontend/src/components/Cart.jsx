@@ -1,15 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { useRecoilState } from "recoil"
 import { getById } from "../store/atom"
 import { startTransition } from 'react';
 
 export default function Cart({id}){
-    const [cart,setCart] = useState(0)
+    const [cart,setCart] = useState([])
     
     const [data,setData] = useRecoilState(getById(id))
    //const id = '66261594df6655a3ae4f69f3'
-  console.log(data)
+
+   useEffect (() => {
+    
+        const response =  axios.get('http://localhost:3000/admin/all/ordered').then((res) => {return res.data}).then(res => setCart(res))
+       // setCart(response.data)
+        //console.log(response)
+   
+   },[])
+  //console.log(data)
+  console.log(cart)
     return (
         <div>
             <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5">
@@ -19,7 +28,7 @@ export default function Cart({id}){
                 <h2 className="pl-20">Price</h2>
             </div>
         </div>
-        {data.map((e) => {
+        {cart.map((e) => {
             return (
                 <div key={e._id}>
                     <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5 mt-4" >

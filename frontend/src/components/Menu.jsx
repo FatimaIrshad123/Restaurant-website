@@ -10,10 +10,13 @@ import {notifications } from "../store/atom";
 import axios from "axios";
 
 const Menu = () => {
+  const [id,setId] = useState('')
   const data = useRecoilValue(notifications)
-  
 
-  
+  async function request() {
+    await axios.post('http://localhost:3000/admin/')
+  }
+  //console.log(id)
   return (
    
     <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
@@ -25,15 +28,21 @@ const Menu = () => {
           {data.menu.map((x) => {
           
           return (
+            
             <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg" key={x._id}>
-              
     <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
     <div className=" space-y-4">
       <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
      
       <div className=" flex flex-row items-center justify-center gap-4">
         <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
-        <Button title="Buy Now"  />
+        <button onClick={async() => {
+          const res = await axios.post('http://localhost:3000/admin/',{
+          id:x._id
+          })
+          alert('Order added successfully')
+          console.log(res.data)
+        }}>Click</button>
        
       </div>
     </div>

@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/addmenu" element={<AddMenu/>}/>
           <Route path="/menu" element={
           <RecoilRoot>
-            <MenuRecoil />
+            <Menu />
             </RecoilRoot>}
           />
           <Route path= '/cart' element={
