@@ -84,11 +84,5 @@ router.get('/all/ordered',async(req,res)=> {
     res.json(order)
 })
 
-router.get('/',async(req,res) => {
-    const response = await Admin.find({})
-    console.log(response)
-    res.json({Admin : response})
-})
-
 
 module.exports = router;

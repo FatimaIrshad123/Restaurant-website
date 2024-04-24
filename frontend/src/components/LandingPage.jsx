@@ -1,5 +1,5 @@
 import Home from "./Home";
-import About from "./About";
+
 import Menu from "./Menu";
 import Footer from "./Footer";
 import Dishes from "./Dishes";
