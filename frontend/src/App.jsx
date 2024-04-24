@@ -14,6 +14,7 @@ import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import { RecoilRoot } from "recoil";
 import MenuRecoil from "./MenuRecoil";
+import Admin from "./components/Admin";
 
 const App = () => {
   const [cart,setCart] = useState(0)
@@ -21,10 +22,10 @@ const App = () => {
 
     <div>
   <BrowserRouter>
-        <Navbar size={cart}/>
+        
         <Routes>
-          
           <Route path="/" element={<LandingPage />}/>
+          <Route path="/admin" element={<Admin />}/>
           <Route path="/login" element={<Login />}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path="/addmenu" element={<AddMenu/>}/>

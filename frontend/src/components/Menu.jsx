@@ -8,10 +8,11 @@ import Button from "../layouts/Button";
 import { useRecoilValue } from "recoil";
 import {notifications } from "../store/atom";
 import axios from "axios";
+import { URL } from "../url";
 
 const Menu = () => {
     const data = useRecoilValue(notifications)
-
+    axios.defaults.withCredentials = true
   return (
     <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
       <h1 className=" text-4xl font-semibold text-center lg:pt-8 pt-24 pb-10">
@@ -28,7 +29,7 @@ const Menu = () => {
                   <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
                   <button className="px-6 py-1 border-2 border-brightColor text-brightColor hover:bg-brightColor hover:text-white transition-all rounded-full"
                   onClick={async() => {
-                    const res = await axios.post('http://localhost:3000/admin/',{
+                    const res = await axios.post(`${URL}/admin/`,{
                     id:x._id})
                     alert('Order added successfully')
                     //console.log(res.data)

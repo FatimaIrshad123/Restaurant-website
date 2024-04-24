@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../url";
 
 export default function AddMenu(){
     const [title,setTitle] = useState('')
@@ -13,7 +14,7 @@ export default function AddMenu(){
             if (title=='' || imageLink== ''|| price==''){
                 return alert('Please fill the required field')
             }
-            const response = await axios.post("http://localhost:3000/admin/addmenu",{title,imageLink,price},
+            const response = await axios.post(`${URL}/admin/addmenu`,{title,imageLink,price},
             {headers: {
                 'Content-Type': 'application/json',
                 'Authorization' : localStorage.getItem('token')

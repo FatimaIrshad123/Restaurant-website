@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { URL } from "../url";
 
 export default function Login() {
   const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
 
     const navigate = useNavigate()
-
+    axios.defaults.withCredentials = true
     async function sendRequest(){
         try {
-            const response = await axios.post("http://localhost:3000/admin/signin",{username,password} )
+            const response = await axios.post(`${URL}/admin/signin`,{username,password} )
             const jwt = response.data.token;
             localStorage.setItem("token",jwt)
             navigate('/addmenu')

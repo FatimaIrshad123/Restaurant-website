@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function Signup() {
   const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
-
+    axios.defaults.withCredentials = true
     const navigate = useNavigate()
 
     async function sendRequest(){
@@ -13,7 +13,7 @@ export default function Signup() {
             return alert('Invalid Email or password')
         }
         else {
-            const response = await axios.post("http://localhost:3000/admin/signup",{username,password} )
+            const response = await axios.post(`${URL}/admin/signup`,{username,password} )
             const jwt = response.data.token;
             localStorage.setItem("token",jwt)
             navigate('/addmenu')
