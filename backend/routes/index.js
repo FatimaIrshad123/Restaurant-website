@@ -69,13 +69,19 @@ router.get('/:id', async(req,res) => {
 })
 
 router.get('/menu/all', async(req, res) => {
-    
    const response = await Food.find({})
     res.json({menu : response})
 });
 
-router.get('/xyz',(req,res)=> {
-    res.json({msg: 'bac'})
+router.post('/',async(req,res) => {
+    const id = req.body.id
+    const result = await Food.findByIdAndUpdate({_id:id}, {ordered:true})
+    res.json(result)
+})
+
+router.get('/all/ordered',async(req,res)=> {
+    const order = await Food.find({ordered:true})
+    res.json(order)
 })
 
 router.get('/',async(req,res) => {

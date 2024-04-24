@@ -11,7 +11,8 @@ const AdminSchema = mongoose.Schema({
 const FoodSchema = new mongoose.Schema({
     title : String,
     imageLink : String,
-    price : Number
+    price : Number,
+    ordered: Boolean
 });
 
 const Admin = mongoose.model('Admin', AdminSchema);
