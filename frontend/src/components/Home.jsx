@@ -4,20 +4,6 @@ import React, { useState } from "react";
 
 const Home = () => {
   const [data,setData] = useState()
-  function checkBoxes(){
-    console.log('hiii')
-    setData (
-      <div id="checkboxes" className='flex flex-col text-white'>
-                <label for="one"><input type="checkbox" id="one"/>Table 1</label>
-                <label for="two"><input type="checkbox" id="two"/>Table 2 </label>
-                <label for="three"><input type="checkbox" id="three"/>Table 3</label>
-                <label for="one"><input type="checkbox" id="one"/>Table 4</label>
-                <label for="two"><input type="checkbox" id="two"/>Table 4 </label>
-                <label for="three"><input type="checkbox" id="three"/>Table 5</label>
-            </div>
-    )
-  }
-
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleSelectChange = (event) => {
@@ -36,20 +22,15 @@ const Home = () => {
           deleniti?
         </p>
         <div className=" lg:pl-44">
-        <div className=' rounded-lg shadow w-44 dark:bg-gray-700'>
-      
-      <select id="dropdown" value={selectedOption} onChange={handleSelectChange} className='bg-orange-500 rounded-lg text-white'>
-       
-        <option value="">Select your table...</option>
-        <option value="option1" className='rounded-lg'>Table 1</option>
-        <option value="option2">Table 2</option>
-        <option value="option3" className=''>Table 3</option>
-       
-      </select>
-     
-    </div>
-           
-         </div>
+          <div className=' rounded-lg shadow w-44 dark:bg-gray-700'>
+            <select id="dropdown" value={selectedOption} onChange={handleSelectChange} className='bg-orange-500 rounded-lg text-white'>
+              <option value="">Select your table...</option>
+              <option value="option1" className='rounded-lg'>Table 1</option>
+              <option value="option2">Table 2</option>
+              <option value="option3" className=''>Table 3</option>
+            </select>
+          </div> 
+        </div>
       </div>
    </div>
   );
