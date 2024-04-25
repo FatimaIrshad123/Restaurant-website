@@ -33,7 +33,7 @@ const Menu = () => {
                     id:x._id})
                     alert('Order added successfully')
                     //console.log(res.data)
-                  }}>Order now</button>
+                  }}>Add to cart</button>
                 </div>
               </div>
             </div>
