@@ -1,1 +1,1 @@
-export const URL = 'https://resturant-website-backend-x67a-c49q05ipy.vercel.app/'
+export const URL = 'https://resturant-website-backend-x67a-81buyl0co.vercel.app/'
