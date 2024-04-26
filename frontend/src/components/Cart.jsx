@@ -7,24 +7,26 @@ import { useNavigate } from "react-router-dom"
 
 export default function Cart({id}){
     const [cart,setCart] = useState([])
-    const [total,setTotal] = useState()
+    const [total,setTotal] = useState(0)
 
     const navigate = useNavigate()
     let sum = [];
-    let num = 0
-
+   
     useEffect(() => {
         async function data(){
             await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update`)
+            return null;
         }
-        data()
+        window.addEventListener('beforeunload', data);
     }, [])
 
     useEffect (() => {
         axios.get(`${URL}/admin/all/ordered`)
         .then((res) => {return res.data})
         .then(res => {setCart(res)})
-   
+    },[])
+
+    useEffect(() => {
         axios.get(`${URL}/admin/all/ordered`)
         .then((res) => {return res.data})
         .then((res) => res.map((e) => {
@@ -33,10 +35,7 @@ export default function Cart({id}){
          const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
          setTotal(sum1)
          }))
-         console.log(total)
-   },[])
-  
-   console.log(total)
+   },[cart,total])
    
     return (
         <div>
@@ -49,7 +48,6 @@ export default function Cart({id}){
                 </div>
             </div>
         {cart.map((e) => {
-                
             return (
                 <div key={e._id}>
                     <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5 mt-4" >
@@ -67,20 +65,17 @@ export default function Cart({id}){
                                 </svg>
                             </button>
                         </div>
-
                     </div>
                 </div>
             )})}
             <div>
-            <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5">
-                <h1 className="text-4xl text-left py-5 bg-white">Total</h1>
-                <div className="flex font-bold 
-                p-3 rounded w-screen">
-                     <h2 className="pl-10">Your bill: </h2>
-                    <h2 className="pr-48">{total}</h2>
-                   
+                <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5">
+                    <h1 className="text-4xl text-left py-5 bg-white">Total</h1>
+                    <div className="flex font-bold p-3 rounded w-screen">
+                        <h2 className="pl-10">Your bill: </h2>
+                        <h2 className="pr-48">{total}</h2>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     )
