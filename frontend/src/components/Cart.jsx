@@ -12,33 +12,31 @@ export default function Cart({id}){
     const navigate = useNavigate()
     let sum = [];
     let num = 0
-   useEffect (() => {
-    const interval = setInterval(() => {
+
+    useEffect(() => {
+        async function data(){
+            await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update`)
+        }
+        data()
+    }, [])
+
+    useEffect (() => {
         axios.get(`${URL}/admin/all/ordered`)
         .then((res) => {return res.data})
         .then(res => {setCart(res)})
-    },100)
-    return () => clearInterval(interval) 
-   },[])
-
-   useEffect(() => {
-    try{
+   
         axios.get(`${URL}/admin/all/ordered`)
         .then((res) => {return res.data})
         .then((res) => res.map((e) => {
          let x = e.price
          sum.push(x)
          const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-         React.memo(setTotal(sum1))
+         setTotal(sum1)
          }))
-    }catch(error){
-        console.log('error',error)
-    }
-        
-         //console.log(total)
+         console.log(total)
    },[])
   
-
+   console.log(total)
    
     return (
         <div>
@@ -78,7 +76,7 @@ export default function Cart({id}){
                 <h1 className="text-4xl text-left py-5 bg-white">Total</h1>
                 <div className="flex font-bold 
                 p-3 rounded w-screen">
-                     <h2 className="pl-20">Your bill: </h2>
+                     <h2 className="pl-10">Your bill: </h2>
                     <h2 className="pr-48">{total}</h2>
                    
                 </div>
