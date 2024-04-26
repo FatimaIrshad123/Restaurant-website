@@ -11,22 +11,29 @@ export default function Cart({id}){
     let sum = [];
     let num = 0
    useEffect (() => {
-    
+    const interval = setInterval(() => {
         axios.get(`${URL}/admin/all/ordered`)
         .then((res) => {return res.data})
         .then(res => {setCart(res)})
-
-       axios.get(`${URL}/admin/all/ordered`)
-       .then((res) => {return res.data})
-       .then((res) => res.map((e) => {
-        let x = e.price
-        sum.push(x)
-        const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        setTotal(sum1)
-        }))
-       
+    },5000)
+    return () => clearInterval(interval) 
+   },[])
+   useEffect(() => {
+    const interval = setInterval(() => {
+        axios.get(`${URL}/admin/all/ordered`)
+        .then((res) => {return res.data})
+        .then((res) => res.map((e) => {
+         let x = e.price
+         sum.push(x)
+         const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+         setTotal(sum1)
+         }))
+    },5000)
+    return () => clearInterval(interval) 
    },[total])
    console.log(total)
+
+   
     return (
         <div>
             <Navbar />
@@ -45,7 +52,17 @@ export default function Cart({id}){
                         <div className="flex font-bold p-3 rounded w-screen">
                             <h2 className="pr-48">{e.title}</h2>
                             <h2 className="pl-20">{e.price}</h2>
+                            <button onClick={async () => {
+                                await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,{
+                                    id:e._id})
+                                    alert('order deleted successfully')
+                            }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                            </button>
                         </div>
+
                     </div>
                 </div>
             )})}
