@@ -7,14 +7,15 @@ export default function Signup() {
     const [password,setPassword] = useState('')
     axios.defaults.withCredentials = true
     const navigate = useNavigate()
-
+    
     async function sendRequest(){
         if (username== '' || password== ''){
             return alert('Invalid Email or password')
         }
         else {
-            const response = await axios.post(`${URL}/admin/signup`,{username,password} )
+            const response = await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/signup`,{username,password} )
             const jwt = response.data.token;
+            console.log(jwt)
             localStorage.setItem("token",jwt)
             navigate('/admin')
         }

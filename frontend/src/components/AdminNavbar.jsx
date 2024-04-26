@@ -30,7 +30,7 @@ export default function AdminNavbar(){
             <NavLink to="/login" duration={500}
               className="hover:text-brightColor transition-all cursor-pointer">Login 
             </NavLink>
-            <NavLink to="/signup" duration={500}
+            <NavLink to="/secretkey" duration={500}
               className="hover:text-brightColor transition-all cursor-pointer">Signup 
             </NavLink>
           </nav>
@@ -53,7 +53,7 @@ export default function AdminNavbar(){
           <NavLink to="/login"   duration={500}
             className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}> Login
           </NavLink>
-          <NavLink to="/signup"   duration={500}
+          <NavLink to="/secretkey"   duration={500}
             className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Sign Up 
           </NavLink>
           <Link to="/menu" duration={500}

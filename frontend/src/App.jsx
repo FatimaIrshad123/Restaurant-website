@@ -12,8 +12,9 @@ import AddMenu from "./components/AddMenu";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import { RecoilRoot } from "recoil";
-
+import Admin from "./components/Admin";
 import AdminPage  from "./components/AdminPage";
+import SecretKey from "./components/SecretKey";
 
 const App = () => {
   const [cart,setCart] = useState(0)
@@ -24,10 +25,11 @@ const App = () => {
         
         <Routes>
           <Route path="/" element={<LandingPage />}/>
-          <Route path="/admin" element={<AdminPage />}/>
+          <Route path="/admin" element={<Admin />}/>
           <Route path="/login" element={<Login />}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path="/addmenu" element={<AddMenu/>}/>
+          <Route path="/secretkey" element={<SecretKey />}/>
           <Route path="/menu" element={
           <RecoilRoot>
             <Menu />

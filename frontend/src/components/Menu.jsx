@@ -16,7 +16,6 @@ const Menu = () => {
     //axios.defaults.withCredentials = true
   return (
     <div>
-      <Navbar />
     <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
       <h1 className=" text-4xl font-semibold text-center lg:pt-8 pt-24 pb-10">
         OUR MENU
