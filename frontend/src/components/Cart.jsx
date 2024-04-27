@@ -21,22 +21,29 @@ export default function Cart({id}){
     }, [])
 
     useEffect (() => {
-        axios.get(`${URL}/admin/all/ordered`)
-        .then((res) => {return res.data})
-        .then(res => {setCart(res)})
+        const interval = setInterval(() => {
+            axios.get(`${URL}/admin/all/ordered`)
+            .then((res) => {return res.data})
+            .then(res => {setCart(res)})
+        },200)
+       // return (() => clearInterval(interval))
     },[])
 
     useEffect(() => {
-        axios.get(`${URL}/admin/all/ordered`)
-        .then((res) => {return res.data})
-        .then((res) => res.map((e) => {
-         let x = e.price
-         sum.push(x)
-         const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-         setTotal(sum1)
-         }))
+        //const interval = setInterval(() => {
+            axios.get(`${URL}/admin/all/ordered`)
+            .then((res) => {return res.data})
+            .then((res) => res.map((e) => {
+             let x = e.price
+             sum.push(x)
+             const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+             setTotal(sum1)
+             }))
+             console.log('total',total)
+       // },1000)
+        //return (() => clearInterval(interval))
    },[cart,total])
-   
+   console.log('abc',total)
     return (
         <div>
             <Navbar />
@@ -58,7 +65,8 @@ export default function Cart({id}){
                                 await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,{
                                     id:e._id})
                                     alert('order deleted successfully')
-                                    navigate('/cart')
+                                    window.location.reload()
+                                    //navigate('/cart')
                             }} className="pl-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
