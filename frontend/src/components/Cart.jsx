@@ -29,7 +29,6 @@ export default function Cart(){
                 console.log('total1',total)
             }
         })
-
     }
 
     useEffect(() => {

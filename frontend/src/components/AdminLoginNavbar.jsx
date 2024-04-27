@@ -26,7 +26,7 @@ export default function AdminLoginNavbar(){
                   </div>
                   <nav className="hidden md:flex flex-row items-center text-lg font-medium gap-8">
                     <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Home  </NavLink>
-                    <NavLink to="/menu" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Menu </NavLink>                    
+                    <NavLink to="/admin" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Menu </NavLink>                    
                     <NavLink to="/addmenu" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Add Menu </NavLink>
                     <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={() => localStorage.clear('token')}>Log out </NavLink>
                   </nav>
@@ -42,7 +42,7 @@ export default function AdminLoginNavbar(){
                   <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}> Home </NavLink>
                   <NavLink to="/addmenu" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}> Add Menu</NavLink>
                   <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={() => { localStorage.clea('token')}}>Logout </NavLink>
-                  <Link to="menu" duration={500}
+                  <Link to="/admin" duration={500}
                   className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Menu
                   </Link>
                 </div>
