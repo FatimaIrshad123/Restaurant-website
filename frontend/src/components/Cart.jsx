@@ -5,13 +5,16 @@ import { URL } from "../url"
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
-export default function Cart({id}){
+export default function Cart(){
     const [cart,setCart] = useState([])
     const [total,setTotal] = useState(0)
-
+    const [id,setId] = useState([])
+const [filtered,setFiltered] = useState(cart)
     const navigate = useNavigate()
     let sum = [];
-   
+   const [price,setPrice] = useState(0)
+
+
     useEffect(() => {
         async function data(){
             await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update`)
@@ -19,31 +22,38 @@ export default function Cart({id}){
         }
         window.addEventListener('beforeunload', data);
     }, [])
-
-    useEffect (() => {
-        const interval = setInterval(() => {
-            axios.get(`${URL}/admin/all/ordered`)
-            .then((res) => {return res.data})
-            .then(res => {setCart(res)})
-        },200)
-       // return (() => clearInterval(interval))
-    },[])
-
+    
+    async function handleDelete(id) {
+        const res = await axios.post('http://localhost:3000/admin/delete',
+        // `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
+         {id})
+         const filter =  setCart(cart.filter((item) => item._id !== id ))
+         cart?.map((e) => {
+            let x = e.price
+            setTotal(total-x)
+         console.log('total',total)
+        })
+    }
+    
     useEffect(() => {
-        //const interval = setInterval(() => {
             axios.get(`${URL}/admin/all/ordered`)
             .then((res) => {return res.data})
-            .then((res) => res.map((e) => {
-             let x = e.price
+            .then((res) => {if (res.length === 0){
+                console.log('no order')
+                return null;
+            }else{
+                setCart(res)
+            }
+            res?.map((e) => {
+                let x = e.price
              sum.push(x)
              const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
              setTotal(sum1)
-             }))
-             console.log('total',total)
-       // },1000)
-        //return (() => clearInterval(interval))
-   },[cart,total])
-   console.log('abc',total)
+             console.log(total)
+            })
+        })          
+   },[])
+
     return (
         <div>
             <Navbar />
@@ -61,13 +71,7 @@ export default function Cart({id}){
                         <div className="flex font-bold p-3 rounded w-screen">
                             <h2 className="pr-48">{e.title}</h2>
                             <h2 className="pl-20">{e.price}</h2>
-                            <button onClick={async () => {
-                                await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,{
-                                    id:e._id})
-                                    alert('order deleted successfully')
-                                    window.location.reload()
-                                    //navigate('/cart')
-                            }} className="pl-10">
+                            <button onClick={()=> {handleDelete(e._id)}} className="pl-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
@@ -84,7 +88,7 @@ export default function Cart({id}){
                         <h2 className="pr-48">{total}</h2>
                     </div>
                 </div>
-            </div>
+        </div>
         </div>
     )
 }
