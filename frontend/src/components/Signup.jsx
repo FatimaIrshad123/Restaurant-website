@@ -13,8 +13,7 @@ export default function Signup() {
             return alert('Invalid Email or password')
         }
         else {
-            const response = await axios.post('http://localhost:3000/admin/signup',
-             // ` https://resturant-website-bd3aac525b4d.herokuapp.com/admin/signup`,
+            const response = await axios.post(` https://resturant-website-bd3aac525b4d.herokuapp.com/admin/signup`,
              {username,password} )
             const jwt = response.data.token;
             localStorage.setItem("token",jwt)

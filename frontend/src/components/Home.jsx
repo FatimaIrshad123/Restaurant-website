@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 
 const Home = () => {
-  const [data,setData] = useState()
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleSelectChange = (event) => {
