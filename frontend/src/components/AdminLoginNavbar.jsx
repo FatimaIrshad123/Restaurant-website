@@ -5,7 +5,6 @@ import { AiOutlineMenuUnfold } from "react-icons/ai"
 import { useState } from "react"
 import { useRecoilValue } from "recoil";
 import {notifications } from "../store/atom";
-import axios from "axios";
 
 export default function AdminLoginNavbar(){
     const [menu, setMenu] = useState(false);

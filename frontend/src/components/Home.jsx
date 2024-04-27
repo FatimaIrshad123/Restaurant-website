@@ -1,7 +1,6 @@
 import 'flowbite';
 import React, { useState } from "react";
 
-
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
