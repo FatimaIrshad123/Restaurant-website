@@ -18,7 +18,9 @@ export default function Cart(){
     }, [])
 
     async function handleDelete(id) {
-        const res = await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,{id})
+        const res = await axios.post('http://localhost:3000/admin/delete',
+            //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
+            {id})
         const filter =  setCart(cart.filter((item) => item._id !== id ))
          cart?.map((e) => {
             if(e._id == id){

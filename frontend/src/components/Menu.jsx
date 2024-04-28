@@ -27,7 +27,9 @@ const Menu = () => {
                   <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
                   <button className="px-6 py-1 border-2 border-brightColor text-brightColor hover:bg-brightColor hover:text-white transition-all rounded-full"
                   onClick={async() => {
-                    const res = await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin`,{id:x._id})
+                    const res = await axios.post('http://localhost:3000/admin',
+                      //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin`,
+                      {id:x._id})
                     alert('Order added successfully')
                   }}>Add to cart</button>
                 </div>

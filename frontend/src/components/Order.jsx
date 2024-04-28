@@ -1,20 +1,35 @@
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { URL } from "../url"
+import React from "react"
 import { NavLink,Link,useNavigate } from "react-router-dom"
 import { BiRestaurant } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
 import { AiOutlineMenuUnfold } from "react-icons/ai"
-import { useState } from "react"
-import { useRecoilValue } from "recoil";
-import {notifications } from "../store/atom";
 
-export default function AdminLoginNavbar(){
+
+export default function Order(){
+    const [cart,setCart] = useState([])
+    const [table, setTable] = useState('')
     const [menu, setMenu] = useState(false);
     const handleChange = () => {setMenu(!menu);};
     const closeMenu = () => {setMenu(false);};
-    const data = useRecoilValue(notifications)
 
+    useEffect(() => {
+        axios.get(`${URL}/admin/all/ordered`)
+        .then((res) => {return res.data})
+        .then((res) => {if (res.length === 0){
+            return null;
+        }else{
+            setCart(res)
+        }})          
+    },[])
+
+    const data = (sessionStorage.getItem('table'))
+    console.log(data)
     return (
-      <div>
-          <div>
+        <div>
+            <div>
             <div className=" fixed w-full">
               <div>
                 <div className=" flex flex-row justify-between p-5 md:px-32 px-5 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
@@ -51,27 +66,26 @@ export default function AdminLoginNavbar(){
               </div>
             </div>
           </div>
-          <div>
-            <div className="min-h-screen flex flex-col justify-center items-center lg:px-32 px-5">
-              <h1 className=" text-4xl font-semibold text-center lg:pt-8 pt-24 pb-10">
-                OUR MENU
-              </h1>
-              <div className=" flex flex-wrap gap-8 justify-center">
-                {data.menu.map((x) => {
-                  return (
-                    <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg" key={x._id}>
-                      <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
-                      <div className=" space-y-4">
-                        <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
-                        <div className=" flex flex-row items-center justify-center gap-4">
-                          <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
+ 
+            <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5">
+                <h1 className="text-4xl text-left py-5 bg-white">Cart</h1>
+                <div className="flex font-bold p-3 rounded w-screen">
+                    <h2 className="pr-20">Food Name</h2>
+                    <h2 className="pl-10">Price</h2>
+                </div>
+            </div>
+            {cart.map((e) => {
+                return (
+                    <div key={e._id} className="w-full">
+                        <h2 className="text-2xl font-bold bg-white text-center">{data}</h2>
+                        <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5 mt-4" >
+                            <div className="flex font-bold p-3 rounded w-screen">
+                                <h2 className="pr-20">{e.title}</h2>
+                                <h2 className="pl-10">{e.price}</h2>
+                            </div>
                         </div>
-                      </div>
                     </div>
                 )})}
-            </div>
-          </div>
         </div>
-      </div>
     )
 }

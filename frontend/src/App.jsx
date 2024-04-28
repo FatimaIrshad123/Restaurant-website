@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 import { RecoilRoot } from "recoil";
 import Admin from "./components/Admin";
 import SecretKey from "./components/SecretKey";
+import Order from "./components/Order";
 
 const App = () => {
   
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/secretkey" element={<SecretKey />}/>
           <Route path="/menu" element={<RecoilRoot><Menu/></RecoilRoot>}/>
           <Route path= '/cart' element={<RecoilRoot><Cart/></RecoilRoot>}/>
+          <Route path="/order" element={<Order />}/>
         </Routes>
       </BrowserRouter>
     </div>
