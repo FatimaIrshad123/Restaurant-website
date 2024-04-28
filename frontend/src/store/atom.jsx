@@ -9,13 +9,13 @@ export const notifications = atom({
     key: "networkAtom",
     default : selector({
         key : 'networkAtomSelector',
+
         get : async() => {  
-            const res = await axios.get(`${URL}/admin/menu/all`,
-            //{headers:{'Authorization' : localStorage.getItem('token')}}
-        )
-        console.log(res.data)
-           return res.data
-        }
+                const res = await axios.get(`${URL}/admin/menu/all`)
+                console.log('res.data',res.data)
+                console.log('res.data.menu',res.data.menu)
+                   return res.data.menu
+                }
     })
 });
 

@@ -23,6 +23,7 @@ export default function Cart(){
             //)
                   console.log('hello')
         }
+        //data()
         window.addEventListener('beforeunload', data);
         return (() => {window.removeEventListener('beforeunload', data)})
     },[])
@@ -100,7 +101,7 @@ export default function Cart(){
                             <h2 className="pr-48">{total}</h2>
                             <button onClick={() => {
                                 //navigate('/')
-                                alert('Your order will be ready in 5s')
+                                alert('Order Submitted')
                             }}><Link to={'/'}>Order now</Link></button>
                         </div>
                     </div>
