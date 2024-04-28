@@ -3,14 +3,25 @@ import { BiRestaurant } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
 import { AiOutlineMenuUnfold } from "react-icons/ai"
 import { useState } from "react"
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {notifications } from "../store/atom";
+import axios from "axios"
 
-export default function AdminLoginNavbar(){
+export default function AdminMenu(){
     const [menu, setMenu] = useState(false);
-    const handleChange = () => {setMenu(!menu);};
-    const closeMenu = () => {setMenu(false);};
-    const data = useRecoilValue(notifications)
+    const handleChange = () => {setMenu(!menu)};
+    const closeMenu = () => {setMenu(false)};
+    const [data,setData] = useRecoilState(notifications)
+
+    async function handleDelete(id) {
+      const navigate = useNavigate()
+        const res = await axios.post(
+            //'http://localhost:3000/admin/menu/delete',
+            `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
+            {id})
+        alert('Menu deleted successfully')
+        navigate('/admin')
+    }
 
     return (
       <div>
@@ -23,8 +34,7 @@ export default function AdminLoginNavbar(){
                     <h1 className=" text-xl font-semibold">FoodieWeb</h1>
                   </div>
                   <nav className="hidden md:flex flex-row items-center text-lg font-medium gap-8">
-                    <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Home  </NavLink>
-                    <NavLink to="/adminmenu" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Menu </NavLink>                    
+                    <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Home  </NavLink>                
                     <NavLink to="/addmenu" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Add Menu </NavLink>
                     <NavLink to="/order" duration={500} className="hover:text-brightColor transition-all cursor-pointer">Order </NavLink>
                     <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={() => localStorage.clear('token')}>Log out </NavLink>
@@ -41,11 +51,8 @@ export default function AdminLoginNavbar(){
                   <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}> Home </NavLink>
                   <NavLink to="/addmenu" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}> Add Menu</NavLink>
                   <NavLink to="/" duration={500} className="hover:text-brightColor transition-all cursor-pointer" onClick={() => { localStorage.clea('token')}}>Logout </NavLink>
-                  <Link to="/adminmenu" duration={500}
-                  className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Menu
-                  </Link>
                   <Link to="/order" duration={500}
-                  className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Orders
+                  className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Menu
                   </Link>
                 </div>
               </div>
@@ -65,6 +72,8 @@ export default function AdminLoginNavbar(){
                         <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
                         <div className=" flex flex-row items-center justify-center gap-4">
                           <h3 className=" font-semibold text-lg">{x.price} Rs</h3>
+                          <button className="px-6 py-1 border-2 border-brightColor text-brightColor hover:bg-brightColor hover:text-white transition-all rounded-full"
+                            onClick = {() => {handleDelete(x._id)}}>Delete Menu</button>
                         </div>
                       </div>
                     </div>

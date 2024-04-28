@@ -3,7 +3,7 @@ import axios from "axios"
 import Navbar from "./Navbar"
 import { URL } from "../url"
 import React from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Cart(){
     const [cart,setCart] = useState([])
@@ -11,19 +11,30 @@ export default function Cart(){
     let sum = [];
     const navigate = useNavigate()
     
+    useEffect(() => {
         async function data(){
-            await axios.post('http://localhost:3000/admin/cart/update',
+
+            //await axios.post(
+                //'http://localhost:3000/admin/cart/update',
+                navigator.sendBeacon(
+                    'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update',
+                  );
                 //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update`
-            )
-            return null;
+            //)
+                  console.log('hello')
         }
         window.addEventListener('beforeunload', data);
+        return (() => {window.removeEventListener('beforeunload', data)})
+    },[])
+        
     
 
     async function handleDelete(id) {
-        const res = await axios.post('http://localhost:3000/',
-            //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
+        const res = await axios.post(
+            //'http://localhost:3000/',
+            `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
             {id})
+            
         const filter =  setCart(cart.filter((item) => item._id !== id ))
          cart?.map((e) => {
             if(e._id == id){
@@ -53,6 +64,7 @@ export default function Cart(){
         })          
    },[])
 
+   
     return (
         <div>
             <Navbar />
@@ -86,14 +98,14 @@ export default function Cart(){
                         <div className="flex font-bold p-3 rounded w-screen  justify-evenly">
                             <h2 className="pl-10">Your bill: </h2>
                             <h2 className="pr-48">{total}</h2>
+                            <button onClick={() => {
+                                //navigate('/')
+                                alert('Your order will be ready in 5s')
+                            }}><Link to={'/'}>Order now</Link></button>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <button onClick={() => {data()
-                    navigate('/')
-                    alert('Order done successfully')}}>Order now</button>
-                </div>
+                
             </div>
         )
     }

@@ -9,10 +9,21 @@ const Home = () => {
   };
 
   useEffect(() => {
+    // Retrieve the value from localStorage on component mount
+    const storedValue = sessionStorage.getItem('table');
+    console.log(storedValue)
+    if (storedValue) {
+      setSelectedOption(storedValue);
+    }
+  }, []);
+
+  useEffect(() => {
     sessionStorage.setItem('table',selectedOption)
   },[selectedOption])
   
-console.log(selectedOption)
+//console.log(selectedOption)
+
+  
   return (
     <div className=" min-h-screen flex flex-row justify-between items-center lg:px-32 px-5 bg-[url('./assets/img/photo1.avif')] bg-cover bg-no-repeat ">
       <div className=" w-full lg:w-2/3 space-y-5">
@@ -27,7 +38,7 @@ console.log(selectedOption)
         <div className=" lg:pl-44">
           <div className=' rounded-lg shadow w-44 dark:bg-gray-700'>
             <select id="dropdown" value={selectedOption} onChange={handleSelectChange} className='bg-orange-500 rounded-lg text-white'>
-              <option value="No order">Select your table...</option>
+              <option value="">Select your table...</option>
               <option value="Table 1" className='rounded-lg'>Table 1</option>
               <option value="Table 2">Table 2</option>
               <option value="Table 3" className=''>Table 3</option>
