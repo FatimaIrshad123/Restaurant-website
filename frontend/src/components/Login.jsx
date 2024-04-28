@@ -50,7 +50,7 @@ export default function Login() {
         <p className="text-sm font-light 
         text-gray-500 dark:text-gray-400 mb-5 ml-5">
           Don’t have an account yet? 
-          <Link to="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
+          <Link to="/secretkey" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
         </p>
       </div>
     </div>

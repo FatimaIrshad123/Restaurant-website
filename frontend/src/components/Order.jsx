@@ -60,7 +60,7 @@ export default function Order(){
                   className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Menu
                   </Link>
                   <Link to="/order" duration={500}
-                  className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Menu
+                  className="hover:text-brightColor transition-all cursor-pointer" onClick={closeMenu}>Orders
                   </Link>
                 </div>
               </div>
@@ -69,19 +69,20 @@ export default function Order(){
  
             <div className="bg-gray-100 pb-5 rounded-lg mx-5">
                 <h1 className="text-4xl text-left py-5 bg-white">Cart</h1>
-                <div className="flex font-bold p-3 rounded w-screen">
-                    <h2 className="pr-20">Food Name</h2>
-                    <h2 className="pl-10">Price</h2>
+                <div className="flex font-bold p-3 rounded w-screen justify-evenly text-2xl">
+                    <h2 className="">Food Name</h2>
+                    <h2 className="">Price</h2>
                 </div>
             </div>
+            <h2 className="text-2xl font-bold bg-white text-center">{data}</h2>
             {cart.map((e) => {
                 return (
                     <div key={e._id} className="w-full">
-                        <h2 className="text-2xl font-bold bg-white text-center">{data}</h2>
+                        
                         <div className="bg-gray-100 pb-5 rounded-lg mx-5 mt-4" >
-                            <div className="flex font-bold p-3 rounded w-screen">
-                                <h2 className="pr-20">{e.title}</h2>
-                                <h2 className="pl-10">{e.price}</h2>
+                            <div className="flex font-bold p-3 rounded w-screen justify-evenly">
+                                <h2 className="">{e.title}</h2>
+                                <h2 className="">{e.price}</h2>
                             </div>
                         </div>
                     </div>
