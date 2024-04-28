@@ -67,7 +67,7 @@ export default function Order(){
             </div>
           </div>
  
-            <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5">
+            <div className="bg-gray-100 pb-5 rounded-lg mx-5">
                 <h1 className="text-4xl text-left py-5 bg-white">Cart</h1>
                 <div className="flex font-bold p-3 rounded w-screen">
                     <h2 className="pr-20">Food Name</h2>
@@ -78,7 +78,7 @@ export default function Order(){
                 return (
                     <div key={e._id} className="w-full">
                         <h2 className="text-2xl font-bold bg-white text-center">{data}</h2>
-                        <div className="bg-gray-100 pb-5 rounded-lg max-w-screen-lg mx-5 mt-4" >
+                        <div className="bg-gray-100 pb-5 rounded-lg mx-5 mt-4" >
                             <div className="flex font-bold p-3 rounded w-screen">
                                 <h2 className="pr-20">{e.title}</h2>
                                 <h2 className="pl-10">{e.price}</h2>
