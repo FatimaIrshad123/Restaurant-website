@@ -9,7 +9,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // Retrieve the value from localStorage on component mount
     const storedValue = sessionStorage.getItem('table');
     console.log(storedValue)
     if (storedValue) {
@@ -20,9 +19,6 @@ const Home = () => {
   useEffect(() => {
     sessionStorage.setItem('table',selectedOption)
   },[selectedOption])
-  
-//console.log(selectedOption)
-
   
   return (
     <div className=" min-h-screen flex flex-row justify-between items-center lg:px-32 px-5 bg-[url('./assets/img/photo1.avif')] bg-cover bg-no-repeat ">
