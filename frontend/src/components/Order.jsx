@@ -24,7 +24,13 @@ export default function Order(){
             setCart(res)
         }})          
     },[])
-
+    
+      async function dataUpdate(){
+          const res = await axios.post('https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update');
+          setCart(res)
+          console.log(res)
+      }
+   
     const data = (sessionStorage.getItem('table'))
     console.log(data)
     return (
@@ -75,10 +81,9 @@ export default function Order(){
                 </div>
             </div>
             <h2 className="text-2xl font-bold bg-white text-center">{data}</h2>
-            {cart.map((e) => {
+            {cart?.map((e) => {
                 return (
                     <div key={e._id} className="w-full">
-                        
                         <div className="bg-gray-100 pb-5 rounded-lg mx-5 mt-4" >
                             <div className="flex font-bold p-3 rounded w-screen justify-evenly">
                                 <h2 className="">{e.title}</h2>
@@ -87,6 +92,9 @@ export default function Order(){
                         </div>
                     </div>
                 )})}
+                {/*<div>
+                  <button className="px-6 py-1 border-2 border-brightColor text-brightColor hover:bg-brightColor hover:text-white transition-all rounded-full" onClick={dataUpdate}>Submit Order</button>
+              </div>*/}
         </div>
     )
 }

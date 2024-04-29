@@ -31,9 +31,7 @@ const Home = () => {
           Elevate Your Inner Foodie with Every Bite.
         </h1>
         <p className=" text-backgroundColor">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis et qui,
-          maxime assumenda repellat corrupti officia dolorum delectus labore
-          deleniti?
+        It is a digital platform that allows diners to view a restaurant's menu, place orders, and interact with various features using electronic devices such as smartphones, tablets, or directly integrated screens on restaurant tables.
         </p>
         <div className=" lg:pl-44">
           <div className=' rounded-lg shadow w-44 dark:bg-gray-700'>

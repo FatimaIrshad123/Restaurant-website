@@ -97,8 +97,8 @@ export default function Cart(){
                     <div className="bg-gray-100 pb-5 rounded-lg  mx-5">
                         <h1 className="text-4xl text-left py-5 bg-white text-center font-semibold">Total</h1>
                         <div className="flex font-bold p-3 rounded w-screen  justify-evenly">
-                            <h2 className="pl-10">Your bill: </h2>
-                            <h2 className="pr-48">{total}</h2>
+                            <h2 className="">Your bill: </h2>
+                            <h2 className="">{total}</h2>
                             <button onClick={() => {
                                 //navigate('/')
                                 alert('Order Submitted')
