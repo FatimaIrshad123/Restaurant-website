@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { URL } from "../url"
 import React from "react"
-import { NavLink,Link,useNavigate } from "react-router-dom"
+import { NavLink,Link } from "react-router-dom"
 import { BiRestaurant } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
 import { AiOutlineMenuUnfold } from "react-icons/ai"
@@ -10,7 +10,6 @@ import { AiOutlineMenuUnfold } from "react-icons/ai"
 
 export default function Order(){
     const [cart,setCart] = useState([])
-    const [table, setTable] = useState('')
     const [menu, setMenu] = useState(false);
     const handleChange = () => {setMenu(!menu);};
     const closeMenu = () => {setMenu(false);};
@@ -27,12 +26,11 @@ export default function Order(){
     
       async function dataUpdate(){
           const res = await axios.post('https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update');
-          setCart(res)
-          console.log(res)
-      }
-   
+         // setCart(res)
+          //console.log(res)
+      }   
     const data = (sessionStorage.getItem('table'))
-    console.log(data)
+
     return (
         <div>
             <div>
@@ -91,10 +89,8 @@ export default function Order(){
                             </div>
                         </div>
                     </div>
-                )})}
-                {/*<div>
-                  <button className="px-6 py-1 border-2 border-brightColor text-brightColor hover:bg-brightColor hover:text-white transition-all rounded-full" onClick={dataUpdate}>Submit Order</button>
-              </div>*/}
+                  )}
+              )}
         </div>
     )
 }
