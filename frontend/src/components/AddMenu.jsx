@@ -2,20 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { URL } from "../url";
-import AdminPage from "./AdminPage";
 
 export default function AddMenu(){
     const [title,setTitle] = useState('')
     const [imageLink,setImageLink] = useState('')
     const [price,setPrice] = useState(0)
-    const navigate = useNavigate()
-
+   
     async function sendRequest(){
         try {
             if (title=='' || imageLink== ''|| price==''){
                 return alert('Please fill the required field')
             }
-            const response = await axios.post(`${URL}/admin/addmenu`,{title,imageLink,price},
+            await axios.post(`${URL}/admin/addmenu`,{title,imageLink,price},
             {headers: {
                 'Content-Type': 'application/json',
                 'Authorization' : localStorage.getItem('token')
