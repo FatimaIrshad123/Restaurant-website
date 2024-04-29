@@ -3,47 +3,28 @@ import axios from "axios"
 import Navbar from "./Navbar"
 import { URL } from "../url"
 import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function Cart(){
     const [cart,setCart] = useState([])
     const [total,setTotal] = useState(0)
     let sum = [];
-    const navigate = useNavigate()
     
     useEffect(() => {
         async function data(){
-
-            //await axios.post(
-                //'http://localhost:3000/admin/cart/update',
-                navigator.sendBeacon(
-                    'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update',
-                  );
-                //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update`
-            //)
-                  console.log('hello')
+            navigator.sendBeacon('https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update');
         }
-        //data()
         window.addEventListener('beforeunload', data);
         return (() => {window.removeEventListener('beforeunload', data)})
     },[])
         
-    
-
     async function handleDelete(id) {
-        const res = await axios.post(
-            //'http://localhost:3000/',
-            `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
-            {id})
-            
-        const filter =  setCart(cart.filter((item) => item._id !== id ))
+        const res = await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,{id})
+        setCart(cart.filter((item) => item._id !== id ))
          cart?.map((e) => {
             if(e._id == id){
                 let x = e.price
-                console.log('total',total)
-                console.log(x)
                 setTotal(total-x)
-                console.log('total1',total)
             }
         })
     }
@@ -56,7 +37,7 @@ export default function Cart(){
             }else{
                 setCart(res)
             }
-                res?.map((e) => {
+            res?.map((e) => {
                 let x = e.price
                 sum.push(x)
                 const sum1 = sum.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -65,7 +46,6 @@ export default function Cart(){
         })          
    },[])
 
-   
     return (
         <div>
             <Navbar />
@@ -82,9 +62,9 @@ export default function Cart(){
                     <div key={e._id} className="w-full">
                         <div className="bg-gray-100 pb-5 rounded-lg  mx-5 mt-4" >
                             <div className="flex font-bold p-3 rounded w-screen  justify-evenly">
-                                <h2 className="">{e.title}</h2>
-                                <h2 className="">{e.price}</h2>
-                                <button onClick={()=> {handleDelete(e._id)}} className="">
+                                <h2>{e.title}</h2>
+                                <h2>{e.price}</h2>
+                                <button onClick={()=> {handleDelete(e._id)}}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                     </svg>
@@ -100,13 +80,11 @@ export default function Cart(){
                             <h2 className="">Your bill: </h2>
                             <h2 className="">{total}</h2>
                             <button onClick={() => {
-                                //navigate('/')
                                 alert('Order Submitted')
                             }}><Link to={'/'}>Order now</Link></button>
                         </div>
                     </div>
                 </div>
-                
             </div>
         )
     }
