@@ -3,23 +3,37 @@ import axios from "axios"
 import Navbar from "./Navbar"
 import { URL } from "../url"
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Cart(){
     const [cart,setCart] = useState([])
     const [total,setTotal] = useState(0)
     let sum = [];
-    
+    const navigate = useNavigate()
     useEffect(() => {
         async function data(){
-            navigator.sendBeacon('https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update');
+            navigator.sendBeacon('http://localhost:3000/admin/cart/update',
+                //'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update'
+            );
         }
         window.addEventListener('beforeunload', data);
         return (() => {window.removeEventListener('beforeunload', data)})
     },[])
         
+    async function dataUpdate(){
+        //const res = await axios.post('http://localhost:3000/admin/cart/update'
+         // 'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update'
+        //);
+        setCart(null)
+        alert('Order Submitted')
+        navigate('/')
+        //console.log(res)
+    }   
+
     async function handleDelete(id) {
-        const res = await axios.post(`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,{id})
+        const res = await axios.post('http://localhost:3000/admin/delete',
+            //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
+            {id})
         setCart(cart.filter((item) => item._id !== id ))
          cart?.map((e) => {
             if(e._id == id){
@@ -79,9 +93,7 @@ export default function Cart(){
                         <div className="flex font-bold p-3 rounded w-screen  justify-evenly">
                             <h2 className="">Your bill: </h2>
                             <h2 className="">{total}</h2>
-                            <button onClick={() => {
-                                alert('Order Submitted')
-                            }}><Link to={'/'}>Order now</Link></button>
+                            <button onClick={dataUpdate}><Link to={'/'}>Order now</Link></button>
                         </div>
                     </div>
                 </div>

@@ -25,10 +25,15 @@ export default function Order(){
     },[])
     
       async function dataUpdate(){
-          const res = await axios.post('https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update');
-         // setCart(res)
-          //console.log(res)
+          const res = await axios.post('http://localhost:3000/admin/cart/update'
+           // 'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update'
+          );
+          setCart(null)
+          alert('Order Delivered')
+          const date = sessionStorage.setItem('table','')
+          console.log(data)
       }   
+
     const data = (sessionStorage.getItem('table'))
 
     return (
@@ -91,6 +96,9 @@ export default function Order(){
                     </div>
                   )}
               )}
+              <div className="justify-center m-5">
+                <button  className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={dataUpdate}>Deliver Order</button>
+              </div>
         </div>
     )
 }

@@ -18,8 +18,8 @@ export default function AdminMenu(){
     async function handleDelete(id) {
       
         const res = await axios.post(
-            //'http://localhost:3000/admin/menu/delete',
-            `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/menu/delete`,
+            'http://localhost:3000/admin/menu/delete',
+           // `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/menu/delete`,
             {id})
             setData(data.filter((item) => item._id !== id ))
         alert('Menu deleted successfully')
