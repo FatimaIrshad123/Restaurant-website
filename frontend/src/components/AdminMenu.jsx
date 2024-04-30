@@ -18,8 +18,8 @@ export default function AdminMenu(){
     async function handleDelete(id) {
       
         const res = await axios.post(
-            'http://localhost:3000/admin/menu/delete',
-           // `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/menu/delete`,
+           // 'http://localhost:3000/admin/menu/delete',
+            `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/menu/delete`,
             {id})
             setData(data.filter((item) => item._id !== id ))
         alert('Menu deleted successfully')
@@ -70,7 +70,7 @@ export default function AdminMenu(){
                 {data.map((x) => {
                   return (
                     <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg" key={x._id}>
-                      <img className=" rounded-xl w-screen h-80" src={x.imageLink} alt="img" />
+                      <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
                       <div className=" space-y-4">
                         <h3 className=" font-semibold text-center text-xl pt-6">{x.title}</h3>
                         <div className=" flex flex-row items-center justify-center gap-4">
