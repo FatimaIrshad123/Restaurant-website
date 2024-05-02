@@ -13,8 +13,8 @@ export default function Cart(){
     useEffect(() => {
         async function data(){
             navigator.sendBeacon(
-                //'http://localhost:3000/admin/cart/update',
-                'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update'
+                'http://localhost:3000/admin/cart/update',
+                //'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update'
             );
         }
         window.addEventListener('beforeunload', data);
@@ -33,8 +33,8 @@ export default function Cart(){
 
     async function handleDelete(id) {
         const res = await axios.post(
-            //'http://localhost:3000/admin/delete',
-            `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
+            'http://localhost:3000/admin/delete',
+            //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
             {id})
         setCart(cart.filter((item) => item._id !== id ))
          cart?.map((e) => {

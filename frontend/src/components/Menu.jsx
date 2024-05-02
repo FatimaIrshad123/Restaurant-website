@@ -32,8 +32,8 @@ const Menu = () => {
                       alert('Please select table first')
                      }else{
                       const res = await axios.post(
-                       // 'http://localhost:3000/admin',
-                        `https://resturant-website-bd3aac525b4d.herokuapp.com/admin`,
+                        'http://localhost:3000/admin',
+                       // `https://resturant-website-bd3aac525b4d.herokuapp.com/admin`,
                         {id:x._id})
                         alert('Order added successfully')
                      }

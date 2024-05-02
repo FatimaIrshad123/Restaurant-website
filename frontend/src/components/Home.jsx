@@ -19,6 +19,8 @@ const Home = () => {
   useEffect(() => {
     sessionStorage.setItem('table',selectedOption)
   },[selectedOption])
+  console.log(selectedOption)
+  sessionStorage.setItem('table1','table1')
   
   return (
     <div className=" min-h-screen flex flex-row justify-between items-center lg:px-32 px-5 bg-[url('./assets/img/photo1.avif')] bg-cover bg-no-repeat ">
