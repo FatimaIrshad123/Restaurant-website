@@ -22,19 +22,14 @@ export default function Cart(){
     },[])
         
     async function dataUpdate(){
-        //const res = await axios.post('http://localhost:3000/admin/cart/update'
-         // 'https://resturant-website-bd3aac525b4d.herokuapp.com/admin/cart/update'
-        //);
         setCart(null)
         alert('Order Submitted')
         navigate('/')
-        //console.log(res)
     }   
 
     async function handleDelete(id) {
         const res = await axios.post(
             'http://localhost:3000/admin/delete',
-            //`https://resturant-website-bd3aac525b4d.herokuapp.com/admin/delete`,
             {id})
         setCart(cart.filter((item) => item._id !== id ))
          cart?.map((e) => {
