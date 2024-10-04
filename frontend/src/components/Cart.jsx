@@ -86,7 +86,7 @@ export default function Cart(){
                 )})}
                 <div>
                     <div className="bg-gray-100 pb-5 rounded-lg  mx-5">
-                        <h1 className="text-4xl text-left py-5 bg-white text-center font-semibold">Total</h1>
+                        <h1 className="text-4xl py-5 bg-white text-center font-semibold">Total</h1>
                         <div className="flex font-bold p-3 rounded w-screen  justify-evenly">
                             <h2 className="">Your bill: </h2>
                             <h2 className="">{total}</h2>

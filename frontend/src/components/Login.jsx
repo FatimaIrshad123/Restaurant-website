@@ -15,8 +15,6 @@ export default function Login() {
             const jwt = response.data.token;
             localStorage.setItem("token",jwt)
             navigate('/admin')
-            console.log(response.data)
-            console.log(jwt)
         } catch (error) {
             alert('Invalid Email or password')
             console.log(error)

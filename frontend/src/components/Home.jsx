@@ -10,7 +10,6 @@ const Home = () => {
 
   useEffect(() => {
     const storedValue = sessionStorage.getItem('table');
-    console.log(storedValue)
     if (storedValue) {
       setSelectedOption(storedValue);
     }
@@ -19,7 +18,6 @@ const Home = () => {
   useEffect(() => {
     sessionStorage.setItem('table',selectedOption)
   },[selectedOption])
-  console.log(selectedOption)
   sessionStorage.setItem('table1','table1')
   
   return (

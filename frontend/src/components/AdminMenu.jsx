@@ -16,7 +16,7 @@ export default function AdminMenu(){
     const navigate = useNavigate()
 
     async function handleDelete(id) {
-      
+    
         const res = await axios.post(
             'http://localhost:3000/admin/menu/delete',
            // `https://resturant-website-bd3aac525b4d.herokuapp.com/admin/menu/delete`,

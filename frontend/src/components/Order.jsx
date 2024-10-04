@@ -32,9 +32,7 @@ export default function Order(){
           setCart(null)
           alert('Order Delivered')
           const date = sessionStorage.setItem('table','')
-          console.log(data)
       }   
-
     const data = (sessionStorage.getItem('table'))
 
     return (

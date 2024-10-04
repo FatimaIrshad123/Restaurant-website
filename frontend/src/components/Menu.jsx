@@ -1,10 +1,8 @@
-import { useState,useEffect } from "react";
 import React from "react";
 import { Suspense } from "react";
 import { useRecoilValue } from "recoil";
 import {notifications } from "../store/atom";
 import axios from "axios";
-
 
 const Menu = () => {
     const data = useRecoilValue(notifications)
@@ -18,7 +16,6 @@ const Menu = () => {
       </h1>
       <div className=" flex flex-wrap gap-8 justify-center">
           {data.map((x) => {
-            console.log('x',x)
           return (
             <div className=" w-full lg:w-1/4 p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg" key={x._id}>
               <img className=" rounded-xl w-screen" src={x.imageLink} alt="img" />
